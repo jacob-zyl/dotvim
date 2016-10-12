@@ -13,3 +13,14 @@ This step is very important.
 ```
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
+
+## Manage Plugins
+To add a plug in:
+```
+git submodule add [URL]
+```
+To initialize and update the submodules:
+```
+git submodule init
+git submodule update
+```
