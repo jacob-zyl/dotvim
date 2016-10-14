@@ -1,0 +1,6 @@
+[submodule "bundle/latexsuite"]
+	path = bundle/latexsuite
+	url = https://github.com/wchargin/vim-latexsuite.git
+[submodule "bundle/pathogen"]
+	path = bundle/pathogen
+	url = https://github.com/tpope/vim-pathogen.git
