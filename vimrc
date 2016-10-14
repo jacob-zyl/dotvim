@@ -25,6 +25,7 @@ set hidden          " Hide buffers when they are abandoned
 set mouse=a         " Enable mouse usage (all modes)
 set ruler
 set number
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 set modeline
 set background=dark
 colorscheme default
