@@ -5,7 +5,7 @@ set sessionoptions-=options
 
 " Set compatible
 set nocp
-set spell
+set nospell
 
 syntax on
 set showcmd		    " Show (partial) command in status line.
@@ -25,23 +25,25 @@ set hidden          " Hide buffers when they are abandoned
 set mouse=a         " Enable mouse usage (all modes)
 set ruler
 set number
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 set modeline
 set background=dark
 colorscheme default
 
+set tw=80
+set shiftwidth=4
+
+" Chinese configuration
 set encoding=utf8
 set fileencoding=utf8
 "set fileencodings=gb18030,ucs-bom,uft-8,default
-"set fileencodings=uft-8,ucs-bom,gb18030,default
-set formatoptions+=m " Let vim do not need a space to creat new line when Unicode is larger than 255
+set formatoptions+=m " Let Vim do not need a space to create new line when Unicode is larger than 255
 set formatoptions+=B " Do not add a space when emerge two lines of Chinese
 
 ""%%% Some global configuration on fold %%%
 let fortran_fold=1
 let C_fold=1
 " let g:tex_fold_enable=1
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevelstart=10
 "set foldcolumn=6
 
@@ -50,8 +52,6 @@ set foldlevelstart=10
 " sw = shiftwidth, the spaces of each level of indent
 " et = expandtab
 set smartindent
-set sw=4
-set ts=4
 au FileType python setlocal expandtab sta shiftwidth=4 softtabstop=4 foldmethod=indent
 au BufNewFile,BufRead *.sage	setf python
 
@@ -82,10 +82,12 @@ au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
 au! BufRead,BufNewFile *.f90 let b:fortran_free_source=1
 au! BufRead,BufNewFile *.f90 let b:fortran_have_tabs=1
 
-"Some useful mapping
+" Some useful mapping
 map <F6> :tabp<cr>
 map <F7> :tabn<cr>
 map <F3> :ls<cr>:e #
 "nmap <F9> :%s/\(\_.*\)\n^,\n\(\_.*\)\n^,\n\(\_.*\)\n^,\n\_.*\n^,\n.*/\2/<CR>
 map <F8> :!python %
+" Set <F2> to toggle line numbers on/off
+nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
