@@ -82,6 +82,12 @@ au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
 au! BufRead,BufNewFile *.f90 let b:fortran_free_source=1
 au! BufRead,BufNewFile *.f90 let b:fortran_have_tabs=1
 
+" Airline theme
+let g:airline_theme='silver'
+
+" Ctags configuration
+set tags=tags;/
+
 " Some useful mapping
 map <F6> :tabp<cr>
 map <F7> :tabn<cr>
@@ -90,4 +96,5 @@ map <F3> :ls<cr>:e #
 map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+
 
