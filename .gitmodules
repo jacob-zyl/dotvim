@@ -22,6 +22,3 @@
 [submodule "bufexplorer"]
 	path = bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
-[submodule "bundle/bundle/bufexplorer"]
-	path = bundle/bundle/bufexplorer
-	url = https://github.com/vim-scripts/bufexplorer.zip.git
