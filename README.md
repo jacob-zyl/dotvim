@@ -17,7 +17,7 @@ ln -s ~/.vim/vimrc ~/.vimrc
 ## Manage Plugins
 To add a plug in:
 ```
-git submodule add [URL]
+git submodule add [URL] [local path]
 ```
 To initialize and update the submodules:
 ```
