@@ -19,9 +19,6 @@
 [submodule "bundle/airline-themes"]
 	path = bundle/airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "bundle/winmanager"]
-	path = bundle/winmanager
-	url = https://github.com/vim-scripts/winmanager--Fox.git
 [submodule "bufexplorer"]
 	path = bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
