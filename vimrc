@@ -52,12 +52,18 @@ set foldlevelstart=10
 " sw = shiftwidth, the spaces of each level of indent
 " et = expandtab
 set smartindent
-au FileType python setlocal expandtab sta shiftwidth=4 softtabstop=4 foldmethod=indent
-au BufNewFile,BufRead *.sage	setf python
+augroup filetype_python
+    autocmd!
+    autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4 foldmethod=indent
+    autocmd BufNewFile,BufRead *.sage	setf python
+augroup END
 
 ""%%% correct latex syntax highlight %%%
 let g:tex_flavor='latex'
-au BufNewFile,BufRead *.Rtex	setf tex
+augroup filetype_tex
+    autocmd!
+    autocmd BufNewFile,BufRead *.Rtex	setf tex
+augroup END
 
 ""%%% LaTeX Suite configurations %%%
 set grepprg=grep\ -nH\ $*
@@ -69,24 +75,27 @@ set grepprg=grep\ -nH\ $*
 "let fortran_have_tabs=1
 "let fortran_fold_conditonals=1
 "let fortran_fold_multilinecomments=1
-au! BufRead,BufNewFile *.f08 let b:fortran_do_enddo=1
-au! BufRead,BufNewFile *.f08 let b:fortran_free_source=1
-au! BufRead,BufNewFile *.f08 let b:fortran_have_tabs=1
-au! BufRead,BufNewFile *.f03 let b:fortran_do_enddo=1
-au! BufRead,BufNewFile *.f03 let b:fortran_free_source=1
-au! BufRead,BufNewFile *.f03 let b:fortran_have_tabs=1
-au! BufRead,BufNewFile *.f95 let b:fortran_do_enddo=1
-au! BufRead,BufNewFile *.f95 let b:fortran_free_source=1
-au! BufRead,BufNewFile *.f95 let b:fortran_have_tabs=1
-au! BufRead,BufNewFile *.f90 let b:fortran_do_enddo=1
-au! BufRead,BufNewFile *.f90 let b:fortran_free_source=1
-au! BufRead,BufNewFile *.f90 let b:fortran_have_tabs=1
+augroup filetype_fortran
+    autocmd!
+    autocmd BufRead,BufNewFile *.f08 setf Fortran
+    autocmd BufRead,BufNewFile *.f03 setf Fortran
+    autocmd BufRead,BufNewFile *.f95 setf Fortran
+    autocmd BufRead,BufNewFile *.f90 setf Fortran
+    autocmd FileType Fortran let b:fortran_do_enddo=1
+    autocmd FileType Fortran let b:fortran_free_source=1
+    autocmd FileType Fortran let b:fortran_have_tabs=1
+    autocmd FileType Fortran let b:fortran_more_precise=1
+    autocmd FileType Fortran setlocal expandtab
+augroup END
 
-" Airline theme
-let g:airline_theme='tomorrow'
+"" Airline theme
+"let g:airline_theme='tomorrow'
 
 " Ctags configuration
 set tags=tags;/
+
+" Markdown configuration
+let g:vim_markdown_math = 1
 
 " Some useful mapping
 map <F6> :tabp<cr>
@@ -97,5 +106,9 @@ map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
-au VimEnter * vsplit
+autocmd VimEnter * SyntasticToggleMode
+autocmd VimEnter * NERDTree
 
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup

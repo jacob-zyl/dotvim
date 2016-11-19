@@ -10,18 +10,9 @@
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/vim-airline"]
-	path = bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline.git
 [submodule "bundle/nerdtree"]
 	path = bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule "bundle/airline-themes"]
-	path = bundle/airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes
-[submodule "bufexplorer"]
-	path = bufexplorer
-	url = https://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "bundle/sytastic"]
 	path = bundle/sytastic
 	url = git@github.com:scrooloose/syntastic.git
