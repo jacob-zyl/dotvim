@@ -22,3 +22,12 @@
 [submodule "bufexplorer"]
 	path = bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
+[submodule "bundle/sytastic"]
+	path = bundle/sytastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/gruvbox"]
+	path = bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "bundle/markdown"]
+	path = bundle/markdown
+	url = https://github.com/plasticboy/vim-markdown.git

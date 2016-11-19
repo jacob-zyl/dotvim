@@ -26,8 +26,8 @@ set mouse=a         " Enable mouse usage (all modes)
 set ruler
 set number
 set modeline
-set background=dark
-colorscheme default
+set background=light
+colorscheme desert
 
 set tw=80
 set shiftwidth=4
@@ -83,7 +83,7 @@ au! BufRead,BufNewFile *.f90 let b:fortran_free_source=1
 au! BufRead,BufNewFile *.f90 let b:fortran_have_tabs=1
 
 " Airline theme
-let g:airline_theme='silver'
+let g:airline_theme='tomorrow'
 
 " Ctags configuration
 set tags=tags;/
@@ -97,4 +97,5 @@ map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
+au VimEnter * vsplit
 
