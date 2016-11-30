@@ -32,6 +32,8 @@ colorscheme desert
 set tw=80
 set shiftwidth=4
 
+set fileformat=unix
+
 " Chinese configuration
 set encoding=utf8
 set fileencoding=utf8
