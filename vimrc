@@ -6,6 +6,7 @@ set sessionoptions-=options
 " Set compatible
 set nocp
 set nospell
+set shell=/usr/bin/sh
 
 syntax on
 set showcmd		    " Show (partial) command in status line.
