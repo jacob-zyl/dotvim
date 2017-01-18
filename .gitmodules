@@ -22,3 +22,9 @@
 [submodule "bundle/markdown"]
 	path = bundle/markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "bundle/fugitive"]
+	path = bundle/fugitive
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "bundle/ConqueGDB"]
+	path = bundle/ConqueGDB
+	url = git@github.com:vim-scripts/Conque-GDB.git

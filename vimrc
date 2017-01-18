@@ -110,7 +110,6 @@ map <F8> :!python %
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 autocmd VimEnter * SyntasticToggleMode
-autocmd VimEnter * NERDTree
 
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
