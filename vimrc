@@ -27,7 +27,7 @@ set mouse=a         " Enable mouse usage (all modes)
 set ruler
 set number
 set modeline
-set background=light
+set background=dark
 colorscheme desert
 
 set tw=80
@@ -92,7 +92,7 @@ augroup filetype_fortran
 augroup END
 
 "" Airline theme
-"let g:airline_theme='tomorrow'
+let g:airline_theme='tomorrow'
 
 " Ctags configuration
 set tags=tags;/
@@ -111,6 +111,7 @@ nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 autocmd VimEnter * SyntasticToggleMode
 
+"" Powerline things.
 "python3 from powerline.vim import setup as powerline_setup
 "python3 powerline_setup()
 "python3 del powerline_setup
