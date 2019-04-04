@@ -22,9 +22,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
-[submodule "bundle/ConqueGDB"]
-	path = bundle/ConqueGDB
-	url = git@github.com:vim-scripts/Conque-GDB.git
 [submodule "bundle/vimtex"]
 	path = bundle/vimtex
 	url = git@github.com:lervag/vimtex.git
