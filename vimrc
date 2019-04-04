@@ -5,11 +5,11 @@ set sessionoptions-=options
 
 " Set compatible
 set nocp
-set nospell
+"set nospell
 set shell=/usr/bin/sh
 
 syntax on
-set showcmd		    " Show (partial) command in status line.
+set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 
 " This line is added some time I forget, to be studied.
@@ -17,18 +17,18 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"" Basics
 filetype plugin indent on
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-set incsearch		" Incremental search
+"set incsearch		" Incremental search
 set autowrite		" Automatically save before commands like :next and :make
 set hidden          " Hide buffers when they are abandoned
-set mouse=a         " Enable mouse usage (all modes)
-set ruler
+set mouse=""
 set number
 set modeline
 set background=dark
-colorscheme desert
+colorscheme gruvbox
 
 set tw=80
 set shiftwidth=4
@@ -42,15 +42,12 @@ set fileencoding=utf8
 set formatoptions+=m " Let Vim do not need a space to create new line when Unicode is larger than 255
 set formatoptions+=B " Do not add a space when emerge two lines of Chinese
 
-""%%% Some global configuration on fold %%%
-let fortran_fold=1
-let C_fold=1
-" let g:tex_fold_enable=1
+"" Some global configuration on fold
 set foldmethod=syntax
 set foldlevelstart=10
 "set foldcolumn=6
 
-""%%% Some settings on Python %%%
+"" Some settings on Python
 " ts = tabstop, the spaces occupied by a TAB
 " sw = shiftwidth, the spaces of each level of indent
 " et = expandtab
@@ -61,15 +58,17 @@ augroup filetype_python
     autocmd BufNewFile,BufRead *.sage	setf python
 augroup END
 
-""%%% correct latex syntax highlight %%%
+"" LaTeX and vimtex
 let g:tex_flavor='latex'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
 augroup filetype_tex
     autocmd!
     autocmd BufNewFile,BufRead *.Rtex	setf tex
 augroup END
 
-""%%% LaTeX Suite configurations %%%
-set grepprg=grep\ -nH\ $*
 
 ""%%% Some Fortran configuration %%%
 "let fortran_more_precise=1
@@ -78,6 +77,7 @@ set grepprg=grep\ -nH\ $*
 "let fortran_have_tabs=1
 "let fortran_fold_conditonals=1
 "let fortran_fold_multilinecomments=1
+let fortran_fold=1
 augroup filetype_fortran
     autocmd!
     autocmd BufRead,BufNewFile *.f08 setf Fortran
@@ -90,9 +90,6 @@ augroup filetype_fortran
     autocmd FileType Fortran let b:fortran_more_precise=1
     autocmd FileType Fortran setlocal expandtab
 augroup END
-
-"" Airline theme
-let g:airline_theme='tomorrow'
 
 " Ctags configuration
 set tags=tags;/
@@ -109,9 +106,125 @@ map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
-autocmd VimEnter * SyntasticToggleMode
+"" Syntastic Configuration
+"autocmd VimEnter * SyntasticToggleMode
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "" Powerline things.
 "python3 from powerline.vim import setup as powerline_setup
 "python3 powerline_setup()
 "python3 del powerline_setup
+
+"" UltiSnips Configurations
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+snippet sign "Signature"
+Yours sincerely,
+Zeyu Liu
+endsnippet
+
+snippet today "Date"
+`date +%F`
+endsnippet
+
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+    snip.rv = ' '
+else:
+    snip.rv = ''
+`$2
+endsnippet
+
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+snippet sr "^2" iA
+^2
+endsnippet
+
+snippet cb "^3" iA
+^3
+endsnippet
+
+snippet compl "complement" iA
+^{c}
+endsnippet
+
+snippet td "superscript" iA
+^{$1}$0
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+priority 1000
+snippet '^.*\)/' "() Fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
+endsnippet
+
+snippet / "Fraction" iA
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+
+snippet sympy "sympy block " w
+sympy $1 sympy$0
+endsnippet
+
+priority 10000
+snippet 'sympy(.*)sympy' "evaluate sympy" wr
+`!p
+from sympy import *
+x, y, z, t = symbols('x y z t')
+k, m, n = symbols('k m n', integer=True)
+f, g, h = symbols('f g h', cls=Function)
+init_printing()
+snip.rv = eval('latex(' + match.group(1).replace('\\', '') \
+    .replace('^', '**') \
+    .replace('{', '(') \
+    .replace('}', ')') + ')')
+`
+endsnippet
+

@@ -1,9 +1,6 @@
 [submodule "bundle/vim-pathogen"]
 	path = bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "bundle/vim-latexsuite"]
-	path = bundle/vim-latexsuite
-	url = https://github.com/wchargin/vim-latexsuite.git
 [submodule "bundle/goyo.vim"]
 	path = bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
@@ -28,3 +25,9 @@
 [submodule "bundle/ConqueGDB"]
 	path = bundle/ConqueGDB
 	url = git@github.com:vim-scripts/Conque-GDB.git
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = git@github.com:lervag/vimtex.git
+[submodule "bundle/ultisnips"]
+	path = bundle/ultisnips
+	url = git@github.com:SirVer/ultisnips.git
