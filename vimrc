@@ -136,3 +136,6 @@ call deoplete#enable()
 call deoplete#custom#var('omni', 'input_patterns', {
 	    \ 'tex': g:vimtex#re#deoplete
 	    \})
+
+"" Julia Configuration
+let g:latex_to_unicode_auto = 1

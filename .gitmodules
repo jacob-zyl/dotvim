@@ -31,3 +31,6 @@
 [submodule "bundle/deoplete.nvim"]
 	path = bundle/deoplete.nvim
 	url = git@github.com:Shougo/deoplete.nvim.git
+[submodule "bundle/julia"]
+	path = bundle/julia
+	url = git@github.com:JuliaEditorSupport/julia-vim.git
