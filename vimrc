@@ -132,7 +132,7 @@ let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 "" deoplete Configuration
-"call deoplete#enable()
-"call deoplete#custom#var('omni', 'input_patterns', {
-	    "\ 'tex': g:vimtex#re#deoplete
-	    "\})
+call deoplete#enable()
+call deoplete#custom#var('omni', 'input_patterns', {
+	    \ 'tex': g:vimtex#re#deoplete
+	    \})
