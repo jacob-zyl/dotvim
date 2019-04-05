@@ -6,7 +6,7 @@ set sessionoptions-=options
 " Set compatible
 set nocp
 "set nospell
-set shell=/usr/bin/sh
+"set shell=/usr/bin/sh
 
 syntax on
 set showcmd		" Show (partial) command in status line.
@@ -46,6 +46,10 @@ set formatoptions+=B " Do not add a space when emerge two lines of Chinese
 set foldmethod=syntax
 set foldlevelstart=10
 "set foldcolumn=6
+
+
+"" Home-made keymaps
+nmap Q !!$SHELL<CR>
 
 "" Some settings on Python
 " ts = tabstop, the spaces occupied by a TAB
@@ -126,3 +130,9 @@ let g:syntastic_check_on_wq = 0
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"" deoplete Configuration
+"call deoplete#enable()
+"call deoplete#custom#var('omni', 'input_patterns', {
+	    "\ 'tex': g:vimtex#re#deoplete
+	    "\})
