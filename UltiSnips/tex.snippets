@@ -42,7 +42,7 @@ snippet ... "ldots" iA
 \ldots
 endsnippet
 
-snippet table "Table environment" b
+snippet tab "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
 	\caption{${2:caption}}
@@ -60,6 +60,32 @@ snippet fig "Figure environment" b
 	\caption{${4:$3}}
 	\label{fig:${5:${3/\W+/-/g}}}
 \end{figure}
+endsnippet
+
+snippet subfloat "Subfloat" b
+\subfloat[$1][$2% 
+	\label{$3}]{%
+	${4:\includegraphics[width=0.8\textwidth]{$5}}}$0
+endsnippet
+
+snippet subfigure "Subfigure" b
+\begin{subfigure}[b]{$1\linewidth}
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{subfigure}
+endsnippet
+
+snippet subtable "Subtable" b
+\begin{subtable}[b]{$1\linewidth}
+	\centering
+	\caption{$2}
+	\label{tab:$3}
+	\begin{tabular}{${4:c}}
+	$0${4/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
+\end{subtable}
 endsnippet
 
 snippet enum "Enumerate" bA
@@ -109,7 +135,7 @@ endsnippet
 snippet dm "Math" wA
 \[
 ${1:${VISUAL}}
-.\] $0
+${2:.}\] $0
 endsnippet
 
 snippet ali "Align" bA

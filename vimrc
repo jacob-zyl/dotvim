@@ -28,6 +28,7 @@ set mouse=""
 set number
 set modeline
 set background=dark
+set colorcolumn=80
 colorscheme gruvbox
 
 set tw=80
@@ -111,15 +112,15 @@ map <F8> :!python %
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 "" Syntastic Configuration
-"autocmd VimEnter * SyntasticToggleMode
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+""autocmd VimEnter * SyntasticToggleMode
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+"
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
 "" Powerline things.
 "python3 from powerline.vim import setup as powerline_setup
