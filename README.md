@@ -65,3 +65,6 @@ has("python3")` returns `0` instead of `1`, one must run such command:
 ```
 pip3 install --user pynvim
 ```
+Special attention is required here with the option `--user`. Since this means
+the `pynivm` is installed for the current user only, if `sudo -H` is prefixed,
+then this will only be installed to the root user, instead of me.
