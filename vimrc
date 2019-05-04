@@ -5,6 +5,7 @@ set sessionoptions-=options
 
 " Set compatible
 set nocp
+map <Space> <Leader>
 "set nospell
 "set shell=/usr/bin/sh
 
@@ -14,7 +15,7 @@ set showmatch		" Show matching brackets.
 
 " This line is added some time I forget, to be studied.
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 "" Basics
@@ -73,6 +74,17 @@ augroup filetype_tex
     autocmd!
     autocmd BufNewFile,BufRead *.Rtex	setf tex
 augroup END
+
+"" The PDF document should be opened with
+"#!/bin/sh
+"echo $1
+"zathura -s -x "gvim --servername $1 -c \"let g:syncpdf='$1'\" --remote +%{line} %{input}" $*
+"" Given such function, synctex is able to be achieved:
+"function! Synctex()
+    "" remove 'silent' for debugging
+    "execute "silent !zathura --synctex-forward " . line('.') . ":" . col('.') . ":" . bufname('%') . " " . g:syncpdf
+"endfunction
+"map <C-enter> :call Synctex()<cr>
 
 
 ""%%% Some Fortran configuration %%%
@@ -135,7 +147,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 "" deoplete Configuration
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
+    let g:deoplete#omni#input_patterns = {}
 endif
 call deoplete#custom#var('omni', 'input_patterns', {
 	    \ 'tex': g:vimtex#re#deoplete
