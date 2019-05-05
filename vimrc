@@ -9,7 +9,6 @@ map <Space> <Leader>
 "set nospell
 "set shell=/usr/bin/sh
 
-syntax on
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 
@@ -155,3 +154,7 @@ call deoplete#custom#var('omni', 'input_patterns', {
 
 "" Julia Configuration
 let g:latex_to_unicode_auto = 1
+
+
+"" Syntax
+syntax on

@@ -2,6 +2,10 @@
 
 Vim configuration files
 
+## Thoughts
+
+Here is a note for instant inspirations.
+
 ## Vim
 
 The official Vim is obtained by
