@@ -96,4 +96,5 @@ the `pynivm` is installed for the current user only, if `sudo -H` is prefixed,
 then this will only be installed to the root user, instead of me.
 
 This module is installed by install Ubuntu package `python3-neovim`. So this is
-required only in non-Debian distros.
+required only in non-Debian distros. However, `python3-neovim` is always too old
+in most cases.
