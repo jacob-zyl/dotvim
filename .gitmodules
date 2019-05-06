@@ -28,9 +28,9 @@
 [submodule "bundle/julia"]
 	path = bundle/julia
 	url = git@github.com:JuliaEditorSupport/julia-vim.git
-[submodule "vimtex"]
-	path = vimtex
-	url = git@github.com:lervag/vimtex.git
 [submodule "bundle/deoplete"]
 	path = bundle/deoplete
 	url = git@github.com:Shougo/deoplete.nvim.git
+[submodule "bundle/vimtex"]
+	path = bundle/vimtex
+	url = git@github.com:lervag/vimtex.git
