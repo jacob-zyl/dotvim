@@ -1,7 +1,7 @@
-[submodule "bundle/vim-pathogen"]
+[submodule "bundle/pathogen"]
 	path = bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "bundle/goyo.vim"]
+[submodule "bundle/goyo"]
 	path = bundle/goyo
 	url = https://github.com/junegunn/goyo.vim.git
 [submodule "bundle/nerdcommenter"]
@@ -28,7 +28,7 @@
 [submodule "bundle/julia"]
 	path = bundle/julia
 	url = https://github.com/JuliaEditorSupport/julia-vim.git
-[submodule "bundle/vimtex"]
+[submodule "bundle/tex"]
 	path = bundle/tex
 	url = https://github.com/lervag/vimtex.git
 [submodule "bundle/deoplete-jedi"]
