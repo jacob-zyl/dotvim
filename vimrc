@@ -1,5 +1,5 @@
 " Pathogen configuratins
-runtime bundle/vim-pathogen/autoload/pathogen.vim
+runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 set sessionoptions-=options
 " End of Pathogen configurations

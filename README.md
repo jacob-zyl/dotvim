@@ -58,10 +58,6 @@ source ~/.vimrc
 
 ## Manage Plugins 
 
-To add a plug in:
-```
-git submodule add [URL] [local path]
-```
 To initialize the submodules:
 ```
 git submodule init
@@ -70,6 +66,10 @@ git submodule update
 To upgrade all submodules:
 ```
 git submodule foreach git pull origin master
+```
+To add a plug in:
+```
+git submodule add [URL] [local path]
 ```
 To remove a plugin:
 ```
