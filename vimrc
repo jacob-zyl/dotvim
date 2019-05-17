@@ -129,9 +129,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 "" deoplete Configuration
 let g:deoplete#enable_at_startup = 1
-"if !exists('g:deoplete#omni#input_patterns')
-    "let g:deoplete#omni#input_patterns = {}
-"endif
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
 
 "" Julia Configuration
 let g:latex_to_unicode_auto = 1

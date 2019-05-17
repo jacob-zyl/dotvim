@@ -28,12 +28,12 @@
 [submodule "bundle/julia"]
 	path = bundle/julia
 	url = https://github.com/JuliaEditorSupport/julia-vim.git
-[submodule "bundle/deoplete"]
-	path = bundle/deoplete
-	url = https://github.com/Shougo/deoplete.nvim.git
 [submodule "bundle/vimtex"]
 	path = bundle/vimtex
 	url = https://github.com/lervag/vimtex.git
 [submodule "bundle/deoplete-jedi"]
 	path = bundle/deoplete-jedi
 	url = https://github.com/deoplete-plugins/deoplete-jedi
+[submodule "bundle/deoplete"]
+	path = bundle/deoplete
+	url = https://github.com/Shougo/deoplete.nvim.git
