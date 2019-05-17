@@ -139,3 +139,6 @@ let g:latex_to_unicode_auto = 1
 
 "" Syntax
 syntax on
+
+"" Jedi
+let g:deoplete#sources#jedi#python_path="/usr/bin/python3"
