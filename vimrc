@@ -2,36 +2,30 @@
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 set sessionoptions-=options
+" End of Pathogen configurations
 
-" Set compatible
-set nocp
+set nocompatible
 map <Space> <Leader>
-"set nospell
-"set shell=/usr/bin/sh
 
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-
-" This line is added some time I forget, to be studied.
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 "" Basics
 filetype plugin indent on
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
+"set incsearch		" Incremental search (this is on by default
+set nohls		" no highlight search
 set autowrite		" Automatically save before commands like :next and :make
-set hidden          " Hide buffers when they are abandoned
+set hidden          	" Hide buffers when they are abandoned
 set mouse=""
 set number
 set modeline
 set background=dark
-set colorcolumn=80
+set colorcolumn=82
 colorscheme gruvbox
 
-set tw=80
+set textwidth=78
 set shiftwidth=4
 
 set fileformat=unix
@@ -40,11 +34,12 @@ set fileformat=unix
 set encoding=utf8
 set fileencoding=utf8
 "set fileencodings=gb18030,ucs-bom,uft-8,default
-set formatoptions+=m " Let Vim do not need a space to create new line when Unicode is larger than 255
+"" Let Vim do not need a space to create new line when Unicode is larger than 255
+set formatoptions+=m 
 set formatoptions+=B " Do not add a space when emerge two lines of Chinese
 
 "" Some global configuration on fold
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevelstart=10
 "set foldcolumn=6
 
@@ -73,6 +68,9 @@ augroup filetype_tex
     autocmd!
     autocmd BufNewFile,BufRead *.Rtex	setf tex
 augroup END
+call deoplete#custom#var('omni', 'input_patterns', {
+	    \ 'tex': g:vimtex#re#deoplete,
+	    \})
 
 "" The PDF document should be opened with
 "#!/bin/sh
@@ -87,13 +85,6 @@ augroup END
 
 
 ""%%% Some Fortran configuration %%%
-"let fortran_more_precise=1
-"let fortran_do_enddo=1
-"let fortran_free_source=1
-"let fortran_have_tabs=1
-"let fortran_fold_conditonals=1
-"let fortran_fold_multilinecomments=1
-let fortran_fold=1
 augroup filetype_fortran
     autocmd!
     autocmd BufRead,BufNewFile *.f08 setf Fortran
@@ -104,6 +95,7 @@ augroup filetype_fortran
     autocmd FileType Fortran let b:fortran_free_source=1
     autocmd FileType Fortran let b:fortran_have_tabs=1
     autocmd FileType Fortran let b:fortran_more_precise=1
+    autocmd FileType Fortran let b:fortran_fold=1
     autocmd FileType Fortran setlocal expandtab
 augroup END
 
@@ -114,29 +106,21 @@ set tags=tags;/
 let g:vim_markdown_math = 1
 
 " Some useful mapping
-map <F6> :tabp<cr>
-map <F7> :tabn<cr>
 map <F3> :ls<cr>:e #
-"nmap <F9> :%s/\(\_.*\)\n^,\n\(\_.*\)\n^,\n\(\_.*\)\n^,\n\_.*\n^,\n.*/\2/<CR>
 map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
 nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 
 "" Syntastic Configuration
-""autocmd VimEnter * SyntasticToggleMode
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
+autocmd VimEnter * SyntasticToggleMode
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-"" Powerline things.
-"python3 from powerline.vim import setup as powerline_setup
-"python3 powerline_setup()
-"python3 del powerline_setup
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "" UltiSnips Configurations
 let g:UltiSnipsExpandTrigger = '<tab>'
@@ -145,12 +129,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 "" deoplete Configuration
 let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-call deoplete#custom#var('omni', 'input_patterns', {
-	    \ 'tex': g:vimtex#re#deoplete,
-	    \})
+"if !exists('g:deoplete#omni#input_patterns')
+    "let g:deoplete#omni#input_patterns = {}
+"endif
 
 "" Julia Configuration
 let g:latex_to_unicode_auto = 1

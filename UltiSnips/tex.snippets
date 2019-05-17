@@ -20,7 +20,7 @@ endglobal
 snippet template "Basic template" b
 %!TEX TS-program = xelatex
 %!TEX encoding = UTF-8
-\documentclass[a4paper]{${1:article}}
+\documentclass[]{${1:article}}
 
 \input{${2:pagesettings}}
 
@@ -36,7 +36,7 @@ $0
 \end{document}
 endsnippet
 
-snippet macro "Basic macro" b
+snippet mac "Basic macro" w
 \\$1{$2}$0
 endsnippet
 
@@ -54,8 +54,8 @@ endsnippet
 snippet tab "Table environment" b
 \begin{table}[${1:htpb}]
 	\centering
-	\caption{${2:caption}}
-	\label{tab:${3:label}}
+	\caption{${2:caption}%
+	\label{tab:${3:label}}}
 	\begin{tabular}{${5:c}}
 	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
 	\end{tabular}
@@ -66,8 +66,8 @@ snippet fig "Figure environment" b
 \begin{figure}[${1:htpb}]
 	\centering
 	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
+	\caption{${4:$3}%
+	\label{fig:${5:${3/\W+/-/g}}}}
 \end{figure}
 endsnippet
 
@@ -81,16 +81,16 @@ snippet subfigure "Subfigure" b
 \begin{subfigure}[b]{$1\linewidth}
 	\centering
 	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
+	\caption{${4:$3}%
+	\label{fig:${5:${3/\W+/-/g}}}}
 \end{subfigure}
 endsnippet
 
 snippet subtable "Subtable" b
 \begin{subtable}[b]{$1\linewidth}
 	\centering
-	\caption{$2}
-	\label{tab:$3}
+	\caption{$2%
+	\label{tab:$3}}
 	\begin{tabular}{${4:c}}
 	$0${4/((?<=.)c|l|r)|./(?1: & )/g}
 	\end{tabular}
