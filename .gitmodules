@@ -34,3 +34,6 @@
 [submodule "bundle/vimtex"]
 	path = bundle/vimtex
 	url = git@github.com:lervag/vimtex.git
+[submodule "bundle/deoplete-jedi"]
+	path = bundle/deoplete-jedi
+	url = https://github.com/deoplete-plugins/deoplete-jedi
