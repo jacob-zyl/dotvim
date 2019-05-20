@@ -109,7 +109,9 @@ let g:vim_markdown_math = 1
 map <F3> :ls<cr>:e #
 map <F8> :!python %
 " Set <F2> to toggle line numbers on/off
-nnoremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+map <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+map ;; :%s:::<Left><Left>
+map ;g :g::<Left>
 
 "" Syntastic Configuration
 autocmd VimEnter * SyntasticToggleMode
