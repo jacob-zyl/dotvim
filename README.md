@@ -6,6 +6,8 @@ Vim configuration files
 
 Here is a note for instant inspirations.
 
+Turn on :NERDTreeToggle on start up on RIGHT side of screen.
+
 ## Vim
 
 The official Vim is obtained by

@@ -1,4 +1,5 @@
 " Pathogen configuratins
+" This should the first lines of .vimrc
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 set sessionoptions-=options
@@ -22,7 +23,7 @@ set mouse=""
 set number
 set modeline
 set background=dark
-set colorcolumn=82
+"set colorcolumn=82
 colorscheme gruvbox
 
 set textwidth=78
@@ -58,19 +59,24 @@ augroup filetype_python
     autocmd BufNewFile,BufRead *.sage	setf python
 augroup END
 
+augroup filetype_haskell
+    autocmd!
+    autocmd FileType haskell setlocal expandtab smarttab shiftwidth=4 softtabstop=4 foldmethod=indent
+augroup END
+
 "" LaTeX and vimtex
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
-let g:tex_conceal='abdmg'
+let g:tex_conceal='abmg'
 augroup filetype_tex
     autocmd!
     autocmd BufNewFile,BufRead *.Rtex	setf tex
 augroup END
-call deoplete#custom#var('omni', 'input_patterns', {
-	    \ 'tex': g:vimtex#re#deoplete,
-	    \})
+" call deoplete#custom#var('omni', 'input_patterns', {
+" 	    \ 'tex': g:vimtex#re#deoplete,
+" 	    \})
 
 "" The PDF document should be opened with
 "#!/bin/sh
