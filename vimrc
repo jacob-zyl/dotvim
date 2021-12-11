@@ -5,30 +5,54 @@ call pathogen#infect()
 set sessionoptions-=options
 " End of Pathogen configurations
 
+" Root of all configurations
 set nocompatible
-map <Space> <Leader>
+let mapleader = ','
+filetype plugin indent on
 
+" Edit vimr configuration file
+nnoremap <Leader>ve :e $MYVIMRC<CR>
+" Reload vimr configuration file
+nnoremap <Leader>vr :source $MYVIMRC<CR>
+" Save my right pinky
+nnoremap <Leader><Leader> :
+
+" Some useful mapping
+map <F3> :ls<cr>:e #
+map <F8> :!python %
+" Set <F2> to toggle line numbers on/off
+map <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+map ;; :%s:::<Left><Left>
+map ;g :g::<Left>
+
+" Basics
+
+"" about searching
+set path+=**
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 
-"" Basics
-filetype plugin indent on
 set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-"set incsearch		" Incremental search (this is on by default
+"set incsearch		" Incremental search (this is already on by default)
 set nohls		" no highlight search
+
+"" Appearance
 set autowrite		" Automatically save before commands like :next and :make
 set hidden          	" Hide buffers when they are abandoned
-set mouse=""
+set mouse=a
 set number
 set modeline
 set background=dark
 "set colorcolumn=82
 colorscheme gruvbox
-
 set textwidth=78
 set shiftwidth=4
+set smartindent
+set conceallevel=1
 
+"" Syntax
+syntax on
 set fileformat=unix
 
 " Chinese configuration
@@ -40,7 +64,7 @@ set formatoptions+=m
 set formatoptions+=B " Do not add a space when emerge two lines of Chinese
 
 "" Some global configuration on fold
-set foldmethod=manual
+set foldmethod=syntax
 set foldlevelstart=10
 "set foldcolumn=6
 
@@ -48,11 +72,10 @@ set foldlevelstart=10
 "" Home-made keymaps
 nmap Q !!$SHELL<CR>
 
-"" Some settings on Python
-" ts = tabstop, the spaces occupied by a TAB
-" sw = shiftwidth, the spaces of each level of indent
-" et = expandtab
-set smartindent
+"" Some settings on Python and Haskell
+"" ts = tabstop, the spaces occupied by a TAB
+"" sw = shiftwidth, the spaces of each level of indent
+"" et = expandtab
 augroup filetype_python
     autocmd!
     autocmd FileType python setlocal expandtab smarttab shiftwidth=4 softtabstop=4 foldmethod=indent
@@ -68,15 +91,11 @@ augroup END
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
 let g:tex_conceal='abmg'
 augroup filetype_tex
     autocmd!
     autocmd BufNewFile,BufRead *.Rtex	setf tex
 augroup END
-" call deoplete#custom#var('omni', 'input_patterns', {
-" 	    \ 'tex': g:vimtex#re#deoplete,
-" 	    \})
 
 "" The PDF document should be opened with
 "#!/bin/sh
@@ -90,7 +109,7 @@ augroup END
 "map <C-enter> :call Synctex()<cr>
 
 
-""%%% Some Fortran configuration %%%
+" Some Fortran configuration
 augroup filetype_fortran
     autocmd!
     autocmd BufRead,BufNewFile *.f08 setf Fortran
@@ -111,15 +130,7 @@ set tags=tags;/
 " Markdown configuration
 let g:vim_markdown_math = 1
 
-" Some useful mapping
-map <F3> :ls<cr>:e #
-map <F8> :!python %
-" Set <F2> to toggle line numbers on/off
-map <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
-map ;; :%s:::<Left><Left>
-map ;g :g::<Left>
-
-"" Syntastic Configuration
+" Syntastic Configuration
 autocmd VimEnter * SyntasticToggleMode
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -128,25 +139,17 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
-"" UltiSnips Configurations
+" UltiSnips Configurations
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 
-"" deoplete Configuration
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
-"" Julia Configuration
+" Julia Configuration
 let g:latex_to_unicode_auto = 1
 
 
-"" Syntax
-syntax on
-
-"" Jedi
-let g:deoplete#sources#jedi#python_path="/usr/bin/python3"
