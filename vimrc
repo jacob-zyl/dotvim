@@ -36,6 +36,7 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 "" Save my right pinky
 nnoremap <Leader><Leader> :
+nnoremap : <nop>
 
 "" Some useful mapping
 map <F3> :ls<cr>:e #
@@ -76,12 +77,16 @@ set number
 set modeline
 set background=dark
 set colorcolumn=80
-colorscheme gruvbox
+colorscheme dracula
 set textwidth=78
 set shiftwidth=4
 set tabstop=4
 set smartindent
 set conceallevel=1
+set culopt=both
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
+set guifont=Source\ Code\ Pro\ 16
 
 "" Some global configuration on fold
 set foldmethod=syntax

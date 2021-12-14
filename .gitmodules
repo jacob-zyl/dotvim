@@ -28,3 +28,6 @@
 [submodule "bundle/YCM"]
 	path = bundle/YCM
 	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule "bundle/dracula"]
+	path = bundle/dracula
+	url = git@github.com:dracula/vim.git
