@@ -1,24 +1,29 @@
 "#######################################
 " Pathogen configuratins
 "#######################################
-
 "" This should the first lines of .vimrc
+"{{{
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 set sessionoptions-=options
 "" End of Pathogen configurations
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Root of all configurations
 "#######################################
-
+"{{{
 set nocompatible
 let mapleader = ','
 filetype plugin indent on
-
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+runtime macros/matchit.vim
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
@@ -29,7 +34,7 @@ filetype plugin indent on
 "" <Leader>v means vimrc file related.
 "" <Leader>c means NERDCommenter related.
 "" <Leader>t means NeERDTree related.
-
+"{{{
 "" Edit vim configuration file
 nnoremap <Leader>ve :e $MYVIMRC<CR>
 "" Reload vimr configuration file
@@ -49,16 +54,16 @@ map ;g :g::<Left>
 
 "" Home-made keymaps
 nmap Q !!$SHELL<CR>
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Basics
 "#######################################
-
-"" about searching
-set path+=**    	" so that :find :b work like charms
+"{{{
+"" Searching
+set path+=**    	" so that :find and :b work like charms
 set showcmd	    	" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
 set ignorecase		" Do case insensitive matching
@@ -88,38 +93,41 @@ autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
 set guifont=Source\ Code\ Pro\ 16
 
-"" Some global configuration on fold
+"" Fold
 set foldmethod=syntax
 set foldlevelstart=10
 "set foldcolumn=6
 
 "" Syntax
 syntax on
-set fileformat=unix
 
+"" Encoding and Format
+set fileformat=unix
+set encoding=utf-8
+set fileencoding=utf-8
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Chinese configuration
 "#######################################
-set encoding=utf8
-set fileencoding=utf8
-"set fileencodings=gb18030,ucs-bom,uft-8,default
+"{{{
+set fileencodings=uft8,gb18030,ucs-bom,default
 
 "" Let Vim do not need a space to create 
 "" new line when Unicode is larger than 255
 set formatoptions+=m 
 "" Do not add a space when emerge two lines of Chinese
 set formatoptions+=B 
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Python and Haskell
 "#######################################
-
+"{{{
 "" ts = tabstop, the spaces occupied by a TAB
 "" sts = softtabstop
 "" sw = shiftwidth, the spaces of each level of indent
@@ -137,30 +145,30 @@ augroup filetype_haskell
     autocmd!
     autocmd FileType haskell setlocal et st sw=4 sts=4 fdm=indent
 augroup END
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " LaTeX and vimtex
 "#######################################
-
+"{{{
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abmg'
 augroup filetype_tex
     autocmd!
-    autocmd BufNewFile,BufRead *.Rtex	setf tex
+    autocmd BufNewFile,BufRead *.Rtex setf tex
 augroup END
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Fortran configuration
 "#######################################
-
+"{{{
 augroup filetype_fortran
     autocmd!
     autocmd BufRead,BufNewFile *.f08 setf Fortran
@@ -174,32 +182,33 @@ augroup filetype_fortran
     autocmd FileType Fortran let b:fortran_fold=1
     autocmd FileType Fortran setlocal expandtab
 augroup END
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Ctags configuration
 "#######################################
-
+"{{{
 set tags=tags;/
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Markdown configuration
 "#######################################
-
+"{{{
 let g:vim_markdown_math = 1
-
+let g:vim_markdown_frontmatter = 1
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Syntastic Configuration
 "#######################################
-
+"{{{
 autocmd VimEnter * SyntasticToggleMode
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -209,39 +218,43 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
-" UltiSnips Configurations
+" UltiSnips and YCM Configurations
 "#######################################
-
+"{{{
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 
 let g:ycm_key_list_select_completion=[]
 let g:ycm_key_list_previous_completion=[]
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " Julia Configuration
 "#######################################
-
+"{{{
 let g:latex_to_unicode_auto = 1
-
+hi link juliaParDelim Delimiter
+hi link juliaSemicolon Operator
+"hi link juliaComma Comma
+hi link juliaFunctionCall Identifier
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
 
 "#######################################
 " NERDTree Configuration
 "#######################################
-
+"{{{
 nnoremap <Leader>t<space> :NERDTreeToggle<CR>
 nnoremap <Leader>tt :NERDTree<CR>
-
+"}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
