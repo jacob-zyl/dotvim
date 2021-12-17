@@ -41,19 +41,19 @@ nnoremap <Leader>ve :e $MYVIMRC<CR>
 nnoremap <Leader>vr :source $MYVIMRC<CR>
 "" Save my right pinky
 nnoremap <Leader><Leader> :
-nnoremap : <nop>
+"nnoremap : <nop>
 
 "" Some useful mapping
-map <F3> :ls<cr>:e #
-map <F8> :!python %
+noremap <F3> :ls<cr>:e #
+noremap <F8> :!python %
 "" Set <F2> to toggle line numbers on/off
-map <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
+noremap <F2> :set nonumber!<CR>:set foldcolumn=0<CR>
 "" set ; commands as subs and more
-map ;; :%s:::<Left><Left>
-map ;g :g::<Left>
+noremap ;; :%s:::<Left><Left>
+noremap ;g :g::<Left>
 
 "" Home-made keymaps
-nmap Q !!$SHELL<CR>
+nnoremap Q !!$SHELL<CR>
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
