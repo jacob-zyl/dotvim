@@ -27,10 +27,11 @@ sudo update-alternatives --config editor
 ## Initializatoin
 
 Fetch the repository from github:
+```
+git clone git://github.com/Jacobi-Leo/dotvim.git ~/.vim --recursive
+```
 
-```
-git clone git://github.com/Jacobi-Leo/dotvim.git ~/.vim
-```
+The `--clone` parameter is very important if submodule of Git is utilized.
 
 ## Create Symbol Links
 
@@ -68,10 +69,12 @@ To upgrade all submodules:
 ```
 git submodule foreach git pull origin master
 ```
+
 To add a plug in:
 ```
 git submodule add [URL] [local path]
 ```
+
 To remove a plugin:
 ```
 # Remove the submodule entry from .git/config
@@ -83,6 +86,13 @@ rm -rf .git/modules/path/to/submodule
 # Remove the entry in .gitmodules and remove the submodule directory located at
 # path/to/submodule
 git rm -f path/to/submodule
+```
+
+### Plugin `YouCompleteMe`
+
+Remember to run:
+```
+python3 install.py --all
 ```
 
 ### Plugin `deoplete`
