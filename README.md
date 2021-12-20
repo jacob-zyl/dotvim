@@ -2,12 +2,6 @@
 
 Vim configuration files
 
-## Thoughts
-
-Here is a note for instant inspirations.
-
-Turn on :NERDTreeToggle on start up on RIGHT side of screen.
-
 ## Vim
 
 The official Vim is obtained by
@@ -65,6 +59,11 @@ To initialize the submodules:
 git submodule init
 git submodule update
 ```
+or a equivalence:
+```
+git submodule update --init
+```
+
 To upgrade all submodules:
 ```
 git submodule foreach git pull origin master
@@ -100,3 +99,11 @@ then this will only be installed to the root user, instead of me.
 This module is installed by install Ubuntu package `python3-neovim`. So this is
 required only in non-Debian distros. However, `python3-neovim` is always too old
 in most cases.
+
+## Thoughts
+
+Here is a note for instant inspirations.
+
+Turn on :NERDTreeToggle on start up on RIGHT side of screen.
+
+
