@@ -53,7 +53,11 @@ noremap ;; :%s:::<Left><Left>
 noremap ;g :g::<Left>
 
 "" Home-made keymaps
-nnoremap Q !!$SHELL<CR>
+
+" This is a very dangerous command with which a line of text is run as shell
+" command, and then the command output substitute the original line of text.
+" I'd rather not using it anymore
+"nnoremap Q !!$SHELL<CR>
 "}}}
 """"""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""
@@ -137,7 +141,7 @@ set formatoptions+=B
 
 augroup filetype_python
     autocmd!
-    autocmd FileType python setlocal et st sw=4 sts=4 fdm=indent
+    autocmd FileType python setlocal et sw=4 sts=4 fdm=indent
     autocmd BufNewFile,BufRead *.sage	setf python
 augroup END
 
